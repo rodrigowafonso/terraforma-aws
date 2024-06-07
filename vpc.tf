@@ -86,12 +86,12 @@ resource "aws_route_table_association" "rtb-avg-publica-association" {
   route_table_id = aws_route_table.rtb-avg-publica.id
 }
 
-# Crianta as tabelas de rotas de subnet privada
+# Criando as tabelas de rotas de subnet privada
 resource "aws_route_table" "rtb-avg-privada" {
   vpc_id = aws_vpc.vpc-avg-devopspro.id
 
   route {
-    cidr_block     = var.cidr_block_subnet_privada
+    cidr_block     = var.cidr_block_rtb_privada
     nat_gateway_id = aws_nat_gateway.nat-gw-avg-privada.id
   }
 
@@ -100,7 +100,7 @@ resource "aws_route_table" "rtb-avg-privada" {
   }
 }
 
-# Garantindo que a tabela de rota pública esta vinculada a subnet pública
+# Garantindo que a tabela de rota privada esta vinculada a subnet pública
 resource "aws_route_table_association" "rtb-avg-privada-association" {
   subnet_id      = aws_subnet.subnet-avg-privada.id
   route_table_id = aws_route_table.rtb-avg-privada.id

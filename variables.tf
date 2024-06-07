@@ -91,11 +91,12 @@ variable "nome_instancia_ec2_db" {
 }
 
 
-variable "srv-avg-mongodb-ip" {
+# variable "srv-avg-mongodb-ip" {
+#   type = string
+#   default = aws_ip
+#   description = "IP privada do instância do Banco de Dados"
 
-  description = "IP privada do instância do Banco de Dados"
-
-}
+# }
 
 variable "familia_instancia_ec2" {
   type        = string
