@@ -13,3 +13,5 @@ echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docke
 # Instalação do Docker
 sudo apt-get update && sudo apt-get install --yes docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
+# Garantindo o Container do MongoDB será iniciazado.
+sudo docker container run -p 80:5000 -e MONGODB_HOST= ${srv-avg-mongodb-ip} -e MONGODB_USERNAME=mongouser -e MONGODB_PASSWORD=mongopwd -d fabricioveronez/rotten-potatoes:v1

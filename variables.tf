@@ -90,6 +90,13 @@ variable "nome_instancia_ec2_db" {
   description = "Nome da instância EC2 do Banco de Dados"
 }
 
+
+variable "srv-avg-mongodb-ip" {
+
+  description = "IP privada do instância do Banco de Dados"
+
+}
+
 variable "familia_instancia_ec2" {
   type        = string
   default     = "t2.micro"

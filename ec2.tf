@@ -1,5 +1,4 @@
 # Garantindo que a key pair para acesso as instâncias
-
 data "aws_key_pair" "key_devops_rodrigoafonso" {
   key_name           = "key_devops_rodrigoafonso"
   include_public_key = true
@@ -35,7 +34,8 @@ resource "aws_instance" "srv-avg-web" {
   key_name = data.aws_key_pair.key_devops_rodrigoafonso.key_name
 
   # Garantindo que a instalação do Docker seja feita na instância por meio do "User_Data"
-  user_data = file("./instalacao-docker.sh")
+  # Garantindo que o Container Docker estará no ar
+  user_data = file("./config-docker-web.sh")
 
   tags = {
     Name = var.nome_instancia_ec2_web
@@ -58,7 +58,7 @@ resource "aws_instance" "srv-avg-mongodb" {
   key_name = data.aws_key_pair.key_devops_rodrigoafonso.key_name
 
   # Garantindo que a instalação do Docker seja feita na instância por meio do "User_Data"
-  user_data = file("./instalacao-docker.sh")
+  user_data = file("./config-docker-db.sh")
 
   tags = {
     Name = var.nome_instancia_ec2_db
